@@ -30,7 +30,7 @@ function findMatch(newFriend, friends) {
     let match;
     //Below not working yet...
     friends.forEach(friend => {
-        let totalScore = newFriend.scores.map((value, index, array) => { Math.abs(parseInt(value) - parseInt(friend.scores[index])) }).reduce((a, b) => a + b);
+        let totalScore = newFriend.scores.map((value, index, array) => Math.abs(parseInt(value) - parseInt(friend.scores[index]))).reduce((a, b) => a + b);
         
 
         if ((closestScore == null) || (totalScore < closestScore)) {

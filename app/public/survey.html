@@ -10,6 +10,19 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <h4>Your New Friend</h4>
+            <div class="row">
+                <div class="col s3">
+                    <img class="responsive-img" id="photo" src="">
+                </div>
+                <div class="col s9 center-align">
+                    <h5 id="name"></h5>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row indigo lighten-5">
             <div class="col s12 center-align">
@@ -83,8 +96,12 @@
 
             $.post("/api/friends", data, response => {
                 console.log(response);
+                $("#name").html(response.name);
+                $("#photo").attr("src", response.photo);
+
+                M.Modal.init(document.querySelector("#result-modal")).open();
             })
-        })
+        });
 
         function createCard(question, index) {
             $("#questions").append(
